@@ -1,31 +1,35 @@
 import { webcrypto } from "crypto";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest } from "next";
+import { NextResponse } from "next/server";
 
 type Data = { ok: boolean } | { error: string };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function POST(req: NextApiRequest) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
   }
 
   if (!req.body.hash) {
-    return res.status(400).json({
-      error: "Missing required field hash",
-    });
+    return NextResponse.json(
+      {
+        error: "Missing required field hash",
+      },
+      { status: 400 }
+    );
   }
 
   if (!process.env.BOT_TOKEN) {
-    return res.status(500).json({ error: "Internal server error" });
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 
   const data = Object.fromEntries(new URLSearchParams(req.body.hash));
   const isValid = await isHashValid(data, process.env.BOT_TOKEN);
 
   if (isValid) {
-    return res.status(200).json({ ok: true });
+    return NextResponse.json({ ok: true }, { status: 200 });
   }
 
-  return res.status(403).json({ error: "Invalid hash" });
+  return NextResponse.json({ error: "Invalid hash" }, { status: 403 });
 }
 
 async function isHashValid(data: Record<string, string>, botToken: string) {
