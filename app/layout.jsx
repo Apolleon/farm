@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function RootLayout({ children }) {
   const [isHashValid, setIsHashValid] = useState(false);
