@@ -2,11 +2,10 @@ import { webcrypto } from "crypto";
 import type { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-type Data = { ok: boolean } | { error: string };
-
-export default async function POST(req: NextApiRequest) {
+export async function POST(req: NextApiRequest) {
+  console.log(req);
   if (req.method !== "POST") {
-    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
+    return NextResponse.json({ error: "ту ещ ыглф" }, { status: 1001 });
   }
 
   if (!req.body.hash) {
