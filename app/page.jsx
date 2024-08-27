@@ -6,5 +6,5 @@ export default function Home() {
   useEffect(() => {
     console.log(window.Telegram.WebApp);
   }, []);
-  return <div></div>;
+  return <div>helloooo</div>;
 }
