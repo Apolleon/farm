@@ -1,14 +1,17 @@
+//@ts-nocheck
+
 import { webcrypto } from "crypto";
 import type { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextApiRequest) {
-  console.log(req);
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+
   if (req.method !== "POST") {
     return NextResponse.json({ error: "ту ещ ыглф" }, { status: 1001 });
   }
 
-  if (!req.body.hash) {
+  if (!body.hash) {
     return NextResponse.json(
       {
         error: "Missing required field hash",
@@ -21,7 +24,7 @@ export async function POST(req: NextApiRequest) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 
-  const data = Object.fromEntries(new URLSearchParams(req.body.hash));
+  const data = Object.fromEntries(new URLSearchParams(body.hash));
   const isValid = await isHashValid(data, process.env.BOT_TOKEN);
 
   if (isValid) {
