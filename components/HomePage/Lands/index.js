@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Land from "./Land";
 import { useLandsStore } from "@/components/scripts/store/landsStore";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
