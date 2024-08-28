@@ -24,7 +24,7 @@ const ShopList = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-2 gap-3 pt-2 overflow-y-auto">
+    <div className="w-full grid grid-cols-2 gap-3 pt-2 overflow-y-auto h-full">
       {shopList.map((item) => (
         <ShopListItem key={item.type} handleBuyPlant={() => handleSetPlant(item.type)} vegetable={item} />
       ))}

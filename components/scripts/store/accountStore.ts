@@ -5,13 +5,14 @@ export interface AccountState {
   account: AccountInterface;
   addProgress: (c: number, e: number) => void;
   init: (acc: AccountInterface) => void;
-  setLocale: (l: string) => void;
+  setLocale: (l: string, u: string) => void;
 }
 
 export const useAccountStore: UseBoundStore<StoreApi<AccountState>> = create((set) => ({
   account: { name: "Игрок", level: { current: 1, goal: 60 }, coins: 10, exp: 0, locale: "en" },
   init: (acc) => set((state: AccountState) => ({ ...state, account: acc })),
-  setLocale: (locale) => set((state: AccountState) => ({ ...state, locale: locale || "en" })),
+  setLocale: (locale, userName) =>
+    set((state: AccountState) => ({ ...state, locale: locale || "en", name: userName || "Player" })),
   addProgress: (coins: number, exp: number) =>
     set((state: AccountState) => {
       const totalCOins = state.account.coins + coins;

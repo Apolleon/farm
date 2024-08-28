@@ -2,6 +2,7 @@
 import React, { FC } from "react";
 import { PlantInterface } from "@/components/types/plants";
 import { useAccountStore } from "../../../scripts/store/accountStore";
+import { dictionary } from "@/components/scripts/dictiomaries/dictionary";
 
 interface ShopListItemInterface {
   handleBuyPlant: () => void;
@@ -50,11 +51,11 @@ const ShopListItem: FC<ShopListItemInterface> = ({ handleBuyPlant, vegetable }) 
       </div>
       {locked && (
         <div
-          className="absolute left-0 top-0 w-full h-full z-10 bg-slate-800 bg-opacity-50 flex justify-center items-center"
+          className="absolute left-0 top-0 w-full h-full z-10 bg-slate-800 bg-opacity-50 flex flex-col justify-center items-center "
           onClick={(e) => e.stopPropagation()}
         >
           <img src={"home/lock.svg"} alt="lock" />
-          <span className="text-slate-100">{vegetable.requiredLvl}</span>
+          <span className="text-slate-100">{vegetable.requiredLvl + " " + dictionary[account.locale].lvl}</span>
         </div>
       )}
     </button>

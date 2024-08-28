@@ -18,7 +18,7 @@ const LandModal = () => {
           <img
             src="/home/close.svg"
             alt=""
-            className="fixed -right-1 top-0 cursor-pointer "
+            className="fixed right-2 top-0 cursor-pointer "
             onClick={() => setLandId("")}
           />
           <span className="font-bold text-2xl text-slate-200">{dictionary[locale].shopTitle}</span>
