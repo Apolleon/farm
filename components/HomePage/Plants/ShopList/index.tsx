@@ -9,7 +9,7 @@ import { useAccountStore } from "../../../scripts/store/accountStore";
 type ShopListType = Array<PlantInterface>;
 const vegetables = ["potato", "pumpkin", "tomato", "melon", "carrot"];
 
-const shopList: ShopListType = vegetables.map((veg: string) => setPlant[veg]());
+const shopList: ShopListType = vegetables.map((veg: string) => setPlant[veg](null));
 
 const ShopList = () => {
   const { landId, setLandId } = useModalStore();
@@ -17,7 +17,7 @@ const ShopList = () => {
   const { addProgress } = useAccountStore();
 
   const handleSetPlant = (type: PlantType) => {
-    const plant = setPlant[type]();
+    const plant = setPlant[type](null);
     addProgress(-plant.cost, 0);
     plantLand(landId, plant);
     setLandId("");

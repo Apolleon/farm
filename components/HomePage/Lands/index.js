@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Land from "./Land";
 import { useLandsStore } from "@/components/scripts/store/landsStore";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
@@ -6,6 +6,7 @@ import { useAccountStore } from "@/components/scripts/store/accountStore";
 const Lands = () => {
   const { lands } = useLandsStore();
   const { account } = useAccountStore();
+  const [buttonTitle, setButtonTitle] = useState("Сохранить прогресс");
 
   const save = () => {
     const res = [];
@@ -13,12 +14,14 @@ const Lands = () => {
 
     Object.values(lands).map((land) => (land.status === "unlocked" || land.status === "gardened") && res.push(land));
     localStorage.setItem("lands", JSON.stringify(res));
+    setButtonTitle("Сохранено");
+    setTimeout(() => setButtonTitle("Сохранить прогресс"), 2000);
   };
 
   return (
     <section className="ml-36 flex flex-col gap-2 pr-12">
-      <button onClick={save} className="self-center bg-yellow-500 w-fit text-slate-100">
-        Сохранить прогресс
+      <button onClick={save} className="self-center bg-black w-fit text-slate-100 mb-5">
+        {buttonTitle}
       </button>
       <div className="flex gap-2 ">
         <Land item={lands.first} />

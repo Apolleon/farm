@@ -14,6 +14,13 @@ const ShopListItem: FC<ShopListItemInterface> = ({ handleBuyPlant, vegetable }) 
   const disabled = account.coins < vegetable.cost;
   const locked = account.level.current < vegetable.requiredLvl;
 
+  const calcGrowTime = () => {
+    const secondsGrow = vegetable.growTime / 1000;
+    const mins = secondsGrow > 60 ? Math.floor(secondsGrow / 60) : "00";
+    const secs = secondsGrow % 60;
+    return mins + ":" + secs;
+  };
+
   return (
     <button
       disabled={disabled}
@@ -33,9 +40,7 @@ const ShopListItem: FC<ShopListItemInterface> = ({ handleBuyPlant, vegetable }) 
         </div>
         <div className="flex gap-1 items-center">
           <img src={"/home/timer.svg"} alt="timer" className="w-4" />
-          <span>
-            {Math.round(vegetable.growTime / 60000)}:{vegetable.growTime % 60}
-          </span>
+          <span>{calcGrowTime()}</span>
         </div>
       </div>
       <img src={vegetable.shopIcon} alt={vegetable.type} width={80} className="justify-self-end" />
@@ -43,13 +48,13 @@ const ShopListItem: FC<ShopListItemInterface> = ({ handleBuyPlant, vegetable }) 
         <img src={"home/paid.svg"} className={vegetable.cost > account.coins ? "fill-slate-700" : ""} alt="coin" />
         <span className={vegetable.cost > account.coins ? "text-slate-700" : ""}>{vegetable.cost}</span>
       </div>
-
       {locked && (
         <div
           className="absolute left-0 top-0 w-full h-full z-10 bg-slate-800 bg-opacity-50 flex justify-center items-center"
           onClick={(e) => e.stopPropagation()}
         >
           <img src={"home/lock.svg"} alt="lock" />
+          <span className="text-slate-100">{vegetable.requiredLvl}</span>
         </div>
       )}
     </button>

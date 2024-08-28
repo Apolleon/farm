@@ -9,7 +9,10 @@ const AccountView: FC = () => {
       <div className="w-full flex flex-col gap-2 bg-stone-800 p-2 rounded-md shadow-lg text-slate-200">
         <div className="w-full flex justify-between font-bold text-2xl">
           <span className="">{account.name}</span>
-          <span className="">{account.coins}</span>
+          <div>
+            <img src={"home/paid.svg"} alt="coin" />
+            <span className="">{account.coins}</span>
+          </div>
         </div>
         <div className="w-full">
           <progress
