@@ -28,7 +28,8 @@
     ".next/types/**/*.ts",
     "app/layout.jsx",
     "app/page.jsx",
-    "app/api/validate-hash"
+    "app/api/validate-hash",
+    "components/HomePage/Lands/index.js"
   ],
   "exclude": ["node_modules"]
 }
