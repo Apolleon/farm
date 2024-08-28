@@ -14,13 +14,12 @@ const Home = ({ params: { lang } }) => {
   const [isHashValid, setIsHashValid] = useState(true);
   const [user, setUser] = useState();
   const { setInitialLands } = useLandsStore();
-  const { init } = useAccountStore();
+  const { init, setLocale } = useAccountStore();
 
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
 
-    tg.current.expand();
-    console.log(tg.current);
+    setLocale(tg.current?.initDataUnsafe?.user?.language_code);
     const lands = localStorage.getItem("lands");
     const account = localStorage.getItem("account");
 

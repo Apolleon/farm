@@ -8,4 +8,5 @@ export interface AccountInterface {
   coins: number;
   exp: number;
   level: LevelInterface;
+  locale: string;
 }
