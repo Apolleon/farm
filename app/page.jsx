@@ -17,6 +17,9 @@ const Home = () => {
   const { init } = useAccountStore();
 
   useEffect(() => {
+    tg.current = window.Telegram.WebApp;
+
+    tg.current.expand();
     const lands = localStorage.getItem("lands");
     const account = localStorage.getItem("account");
 
