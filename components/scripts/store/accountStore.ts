@@ -9,7 +9,7 @@ export interface AccountState {
 }
 
 export const useAccountStore: UseBoundStore<StoreApi<AccountState>> = create((set) => ({
-  account: { name: "Игрок", level: { current: 1, goal: 60 }, coins: 10, exp: 0, locale: "en" },
+  account: { name: "Игрок", level: { current: 1, goal: 60 }, coins: 10, exp: 0, locale: "en", farmerid: 0 },
   init: (acc) => set((state: AccountState) => ({ ...state, account: acc })),
   setLocale: (locale, userName) =>
     set((state: AccountState) => ({ ...state, locale: locale || "en", name: userName || "Player" })),

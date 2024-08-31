@@ -23,7 +23,7 @@ const ShopList = () => {
 
     Object.values(lands).map((land) => (land.status === "unlocked" || land.status === "gardened") && res.push(land));
     try {
-      await axios.post("update.lands", { accId: account.farmerid, lands: JSON.stringify(res) });
+      await axios.post("update-lands", { accId: account.farmerid, lands: JSON.stringify(res) });
       const plant = setPlant[type](null);
       addProgress(-plant.cost, 0);
       plantLand(landId, plant);

@@ -16,7 +16,7 @@ const Home = () => {
   const [isHashValid, setIsHashValid] = useState(true);
   const { setInitialLands } = useLandsStore();
   const { init, setLocale, account } = useAccountStore();
-  console.log(account);
+
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
     tg.current?.expand();
@@ -26,17 +26,16 @@ const Home = () => {
     const userId = tg.current?.initDataUnsafe?.user?.id;
 
     axios
-      .post("/api/validate-hash", { hash: hash })
+      .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.hash })
       .then((response) => setIsHashValid(response.status === 200))
       .then(async () => {
         const { data } = await axios.post("/api/check-unique-user", { id: userId });
-        console.log(data);
-        const acc = JSON.parse(data?.data?.[0]);
+        const { lands, ...acc } = JSON.parse(data[0]);
 
         if (acc) init({ ...acc, locale: locale, name: userName });
         else setLocale(locale, userName);
-        if (acc?.lands) {
-          const newLands = JSON.parse(acc.lands);
+        if (lands) {
+          const newLands = JSON.parse(lands);
           setInitialLands(newLands);
         }
       })
