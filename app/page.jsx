@@ -25,13 +25,13 @@ const Home = () => {
       const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
       const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
       const userId = tg.current?.initDataUnsafe?.user?.id || 5473908171;
-      console.log(tg.current);
+
       // axios
       // .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.hash })
       // .then((response) => setIsHashValid(response.status === 200))
       //.then(async () => {
       const { data } = await axios.post("/api/check-unique-user", { id: userId });
-      const { lands, ...acc } = data;
+      const { lands, ...acc } = data.data;
 
       if (acc) init({ ...acc, locale: locale, name: userName });
       else setLocale(locale, userName);
