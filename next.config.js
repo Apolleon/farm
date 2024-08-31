@@ -7,4 +7,5 @@ module.exports = {
   experimental: {
     forceSwcTransforms: true,
   },
+  reactStrictMode: false,
 };

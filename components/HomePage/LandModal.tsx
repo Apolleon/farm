@@ -21,7 +21,7 @@ const LandModal = () => {
             className="fixed right-6 top-0 cursor-pointer "
             onClick={() => setLandId("")}
           />
-          <span className="font-bold text-2xl text-slate-200">{dictionary[locale].shopTitle}</span>
+          <span className="font-bold text-2xl text-slate-200">{dictionary?.[locale]?.shopTitle}</span>
           <ShopList />
         </div>
       </div>

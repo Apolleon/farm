@@ -1,28 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Land from "./Land";
 import { useLandsStore } from "@/components/scripts/store/landsStore";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
+import axios from "axios";
 
 const Lands = () => {
+  const firstRender = useRef("first");
   const { lands } = useLandsStore();
   const { account } = useAccountStore();
   const [buttonTitle, setButtonTitle] = useState("Сохранить прогресс");
 
-  const save = () => {
-    const res = [];
-    localStorage.setItem("account", JSON.stringify(account));
+  // const save = () => {
+  //   const res = [];
+  //   localStorage.setItem("account", JSON.stringify(account));
 
+  //   Object.values(lands).map((land) => (land.status === "unlocked" || land.status === "gardened") && res.push(land));
+  //   localStorage.setItem("lands", JSON.stringify(res));
+  //   setButtonTitle("Сохранено");
+  //   setTimeout(() => setButtonTitle("Сохранить прогресс"), 2000);
+  // };
+
+  useEffect(() => {
+    console.log(firstRender.current);
+    if (firstRender.current !== "second") {
+      firstRender.current = "second";
+      return;
+    }
+    const res = [];
     Object.values(lands).map((land) => (land.status === "unlocked" || land.status === "gardened") && res.push(land));
-    localStorage.setItem("lands", JSON.stringify(res));
-    setButtonTitle("Сохранено");
-    setTimeout(() => setButtonTitle("Сохранить прогресс"), 2000);
-  };
+    console.log(lands, res);
+    axios.post("/api/update-lands", { acc: account, lands: JSON.stringify(res) });
+  }, [lands, account]);
 
   return (
     <section className="ml-36 flex flex-col gap-2 pr-12">
-      <button onClick={save} className="self-center bg-black w-fit text-slate-100 mb-5">
-        {buttonTitle}
-      </button>
       <div className="flex gap-2 ">
         <Land item={lands.first} />
         <Land item={lands.second} />

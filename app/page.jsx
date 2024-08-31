@@ -15,17 +15,17 @@ const Home = () => {
   let tg = useRef();
   const [isHashValid, setIsHashValid] = useState(true);
   const { setInitialLands } = useLandsStore();
-  const { init, setLocale, account } = useAccountStore();
+  const { init, setLocale } = useAccountStore();
 
   useEffect(() => {
+    tg.current = window.Telegram.WebApp;
+    tg.current?.expand();
+
+    const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
+    const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
+    const userId = tg.current?.initDataUnsafe?.user?.id || 5473908171;
+
     const initIalFn = async () => {
-      tg.current = window.Telegram.WebApp;
-      tg.current?.expand();
-
-      const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
-      const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
-      const userId = tg.current?.initDataUnsafe?.user?.id || 5473908171;
-
       // axios
       // .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.hash })
       // .then((response) => setIsHashValid(response.status === 200))
@@ -34,8 +34,9 @@ const Home = () => {
       const { lands, farmerid, ...acc } = data.data;
 
       if (lands) {
-        init({ ...acc, locale: locale, name: userName, farmerid: farmerid });
+        init({ ...acc, locale: locale, name: userName, farmerid: farmerid, level: JSON.parse(acc.level) });
         const newLands = JSON.parse(lands);
+        console.log(newLands);
         setInitialLands(newLands);
       } else setLocale(locale, userName, farmerid);
     };

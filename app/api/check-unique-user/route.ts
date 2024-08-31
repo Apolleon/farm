@@ -5,13 +5,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log(typeof body.id);
+
   try {
     if (!body.id) throw new Error("No user data!");
     const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
 
     if (res.rowCount === 0) {
-      const res = await sql`INSERT INTO Farmers (farmerid) VALUES (${body.id})`;
+      console.log(3);
+      const res = await sql`INSERT INTO Farmers (farmerid, level, coins) VALUES (${body.id}, ${JSON.stringify({
+        current: 1,
+        goal: 60,
+      })}, 10)`;
+      console.log(res);
       return NextResponse.json({ data: res.rows[0] }, { status: 201 });
     }
     return NextResponse.json({ data: res.rows[0] }, { status: 201 });

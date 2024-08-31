@@ -12,8 +12,8 @@ interface ShopListItemInterface {
 const ShopListItem: FC<ShopListItemInterface> = ({ handleBuyPlant, vegetable }) => {
   const { account } = useAccountStore();
   console.log(account);
-  const disabled = account.coins < vegetable.cost;
-  const locked = account.level.current < vegetable.requiredLvl;
+  const disabled = account?.coins < vegetable.cost;
+  const locked = account?.level?.current < vegetable.requiredLvl;
 
   const calcGrowTime = () => {
     const secondsGrow = vegetable.growTime / 1000;

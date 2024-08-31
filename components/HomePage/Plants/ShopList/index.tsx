@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { PlantInterface, PlantType } from "@/components/types/plants";
 import { setPlant } from "../../../scripts/setPlant";
 import ShopListItem from "./ShopListItem";
@@ -19,11 +19,7 @@ const ShopList = () => {
   const { addProgress, account } = useAccountStore();
 
   const handleSetPlant = async (type: PlantType) => {
-    const res: LandType[] = [];
-
-    Object.values(lands).map((land) => (land.status === "unlocked" || land.status === "gardened") && res.push(land));
     try {
-      await axios.post("update-lands", { accId: account.farmerid, lands: JSON.stringify(res) });
       const plant = setPlant[type](null);
       addProgress(-plant.cost, 0);
       plantLand(landId, plant);

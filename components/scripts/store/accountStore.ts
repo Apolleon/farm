@@ -9,10 +9,20 @@ export interface AccountState {
 }
 
 export const useAccountStore: UseBoundStore<StoreApi<AccountState>> = create((set) => ({
-  account: { name: "Игрок", level: { current: 1, goal: 60 }, coins: 10, exp: 0, locale: "en", farmerid: 0 },
+  account: {} as AccountInterface,
   init: (acc) => set((state: AccountState) => ({ ...state, account: acc })),
   setLocale: (locale, userName, id) =>
-    set((state: AccountState) => ({ ...state, locale: locale || "en", name: userName || "Player", farmerid: id })),
+    set((state: AccountState) => ({
+      ...state,
+      account: {
+        locale: locale,
+        name: userName,
+        farmerid: id,
+        coins: 10,
+        exp: 0,
+        level: { current: 1, goal: 60 },
+      },
+    })),
   addProgress: (coins: number, exp: number) =>
     set((state: AccountState) => {
       const totalCOins = state.account.coins + coins;
