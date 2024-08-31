@@ -5,6 +5,7 @@ import PlantOnLand from "../../Plants/PlantOnLand";
 import { useLandsStore } from "@/components/scripts/store/landsStore";
 import { useModalStore } from "@/components/scripts/store/modalStore";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
+import { dictionary } from "@/components/scripts/dictiomaries/dictionary";
 
 interface LandProps {
   item: LandType;
@@ -13,7 +14,7 @@ interface LandProps {
 const Land: FC<LandProps> = ({ item }) => {
   const { clearLand, setLandReady } = useLandsStore();
   const { setLandId } = useModalStore();
-  const { addProgress } = useAccountStore();
+  const { addProgress, account } = useAccountStore();
 
   const handleClearLand = useCallback(
     (coins: number, exp: number) => {
@@ -38,14 +39,16 @@ const Land: FC<LandProps> = ({ item }) => {
 
   return (
     <div className="w-28 cursor-pointer relative z-10" onClick={handleOpenModal}>
-      <img width={162} className="h-24  " loading="lazy" alt="land" src={"/home/land2.png"} />
+      <img width={162} className="h-24" loading="lazy" alt="land" src={"/home/land2.png"} />
       {item.status === "gardened" && (
         <PlantOnLand handleSetReady={handleSetReady} handleClearLand={handleClearLand} plant={item?.plant} />
       )}
       {item.status === "locked" && (
         <div className="absolute top-0  left-0  bg-slate-700 w-full h-full flex items-center justify-center bg-opacity-75 rounded-xl flex-col">
           <img src={"/home/lock.svg"} alt="lock" loading="lazy" width={20} />
-          <span className="text-slate-100">{item.requiredLvl} lvl</span>
+          <span className="text-slate-100">
+            {item.requiredLvl} {dictionary?.[account?.locale]?.lvl}
+          </span>
         </div>
       )}
       {/* <img width={182} className="ml-4 relative z-10" loading="lazy" alt="land" src={bot} /> */}

@@ -4,11 +4,11 @@ import { dictionary } from "../scripts/dictiomaries/dictionary";
 
 const AccountView: FC = () => {
   const { account } = useAccountStore();
-  console.log(account);
+
   return (
     <div className="fixed w-full top-0 left-0 p-1 z-50 ">
       <div className="w-full flex flex-col gap-2 bg-stone-800 p-2 rounded-md shadow-lg text-slate-200">
-        <div className="w-full flex justify-between font-bold text-2xl">
+        <div className="w-full flex justify-between  text-2xl">
           <span className="">{account.name}</span>
           <div className="flex items-center">
             <img src={"home/paid.svg"} alt="coin" />
