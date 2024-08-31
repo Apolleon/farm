@@ -37,7 +37,7 @@ const Home = () => {
         init({ ...acc, locale: locale, name: userName });
         const newLands = JSON.parse(lands);
         setInitialLands(newLands);
-      } else setLocale(locale, userName);
+      } else setLocale(locale, userName, farmerid);
     };
     initIalFn();
     // })
