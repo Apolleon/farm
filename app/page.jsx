@@ -18,28 +18,31 @@ const Home = () => {
   const { init, setLocale, account } = useAccountStore();
 
   useEffect(() => {
-    tg.current = window.Telegram.WebApp;
-    tg.current?.expand();
+    const initIalFn = async () => {
+      tg.current = window.Telegram.WebApp;
+      tg.current?.expand();
 
-    const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
-    const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
-    const userId = tg.current?.initDataUnsafe?.user?.id;
+      const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
+      const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
+      const userId = tg.current?.initDataUnsafe?.user?.id;
+      console.log(tg.current);
+      // axios
+      // .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.hash })
+      // .then((response) => setIsHashValid(response.status === 200))
+      //.then(async () => {
+      const { data } = await axios.post("/api/check-unique-user", { id: userId });
+      const { lands, ...acc } = data[0];
 
-    axios
-      .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.hash })
-      .then((response) => setIsHashValid(response.status === 200))
-      .then(async () => {
-        const { data } = await axios.post("/api/check-unique-user", { id: userId });
-        const { lands, ...acc } = data[0];
-
-        if (acc) init({ ...acc, locale: locale, name: userName });
-        else setLocale(locale, userName);
-        if (lands) {
-          const newLands = JSON.parse(lands);
-          setInitialLands(newLands);
-        }
-      })
-      .catch((e) => console.error(e));
+      if (acc) init({ ...acc, locale: locale, name: userName });
+      else setLocale(locale, userName);
+      if (lands) {
+        const newLands = JSON.parse(lands);
+        setInitialLands(newLands);
+      }
+    };
+    initIalFn();
+    // })
+    // .catch((e) => console.error(e));
   }, []);
 
   return <div className="text-slate-400">{isHashValid ? <HomePage /> : "error"}</div>;
