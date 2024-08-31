@@ -31,7 +31,7 @@ const Home = () => {
       // .then((response) => setIsHashValid(response.status === 200))
       //.then(async () => {
       const { data } = await axios.post("/api/check-unique-user", { id: userId });
-      const { lands, ...acc } = data.data;
+      const { lands, farmerid, ...acc } = data.data;
 
       if (lands) {
         init({ ...acc, locale: locale, name: userName });
