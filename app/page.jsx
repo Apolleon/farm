@@ -33,12 +33,11 @@ const Home = () => {
       const { data } = await axios.post("/api/check-unique-user", { id: userId });
       const { lands, ...acc } = data.data;
 
-      if (acc) init({ ...acc, locale: locale, name: userName });
-      else setLocale(locale, userName);
       if (lands) {
+        init({ ...acc, locale: locale, name: userName });
         const newLands = JSON.parse(lands);
         setInitialLands(newLands);
-      }
+      } else setLocale(locale, userName);
     };
     initIalFn();
     // })
