@@ -21,10 +21,7 @@ const Home = () => {
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
     tg.current?.expand();
-    tg.current.ready((e) => {
-      console.log(e);
-      console.log("ready");
-    });
+    console.log(tg.current.ready());
     console.log("not ready");
     tg.current.isClosingConfirmationEnabled = true;
     const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
