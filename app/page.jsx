@@ -34,7 +34,7 @@ const Home = () => {
       const { lands, farmerid, ...acc } = data.data;
 
       if (lands) {
-        init({ ...acc, locale: locale, name: userName });
+        init({ ...acc, locale: locale, name: userName, farmerid: farmerid });
         const newLands = JSON.parse(lands);
         setInitialLands(newLands);
       } else setLocale(locale, userName, farmerid);
