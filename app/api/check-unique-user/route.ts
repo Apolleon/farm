@@ -11,12 +11,11 @@ export async function POST(req: NextRequest) {
     const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
 
     if (res.rowCount === 0) {
-      console.log(3);
-      const res = await sql`INSERT INTO Farmers (farmerid, level, coins) VALUES (${body.id}, ${JSON.stringify({
+      await sql`INSERT INTO Farmers (farmerid, level, coins) VALUES (${body.id}, ${JSON.stringify({
         current: 1,
         goal: 60,
       })}, 10)`;
-      console.log(res);
+      const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
       return NextResponse.json({ data: res.rows[0] }, { status: 201 });
     }
     return NextResponse.json({ data: res.rows[0] }, { status: 201 });

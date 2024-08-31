@@ -21,14 +21,12 @@ const Lands = () => {
   // };
 
   useEffect(() => {
-    console.log(firstRender.current);
     if (firstRender.current !== "second") {
       firstRender.current = "second";
       return;
     }
     const res = [];
     Object.values(lands).map((land) => (land.status === "unlocked" || land.status === "gardened") && res.push(land));
-    console.log(lands, res);
     axios.post("/api/update-lands", { acc: account, lands: JSON.stringify(res) });
   }, [lands, account]);
 

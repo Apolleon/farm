@@ -15,8 +15,8 @@ const shopList: ShopListType = vegetables.map((veg: string) => setPlant[veg](nul
 
 const ShopList = () => {
   const { landId, setLandId } = useModalStore();
-  const { plantLand, lands } = useLandsStore();
-  const { addProgress, account } = useAccountStore();
+  const { plantLand } = useLandsStore();
+  const { addProgress } = useAccountStore();
 
   const handleSetPlant = async (type: PlantType) => {
     try {
