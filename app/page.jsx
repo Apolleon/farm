@@ -21,8 +21,8 @@ const Home = () => {
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
     tg.current?.expand();
-    tg.current.ready().then(() => console.log("ready"));
-    console.log("not ready");
+    tg.current.ready();
+    tg.current.onEvent("web_app_ready ", () => console.log("redy"));
     tg.current.isClosingConfirmationEnabled = true;
     const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
     const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
