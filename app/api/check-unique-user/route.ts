@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-
+  console.log(typeof body.id);
   try {
     if (!body.id) throw new Error("No user data!");
     const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ data: res.rows }, { status: 201 });
     }
     return NextResponse.json({ data: res.rows }, { status: 201 });
-    // }
   } catch (e) {
     return NextResponse.json({ e }, { status: 500 });
   }

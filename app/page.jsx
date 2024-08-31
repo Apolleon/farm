@@ -23,7 +23,7 @@ const Home = () => {
 
     const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
     const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
-    const userId = tg.current?.initDataUnsafe?.user?.id || "Player";
+    const userId = tg.current?.initDataUnsafe?.user?.id;
 
     axios
       .post("/api/validate-hash", { hash: hash })
