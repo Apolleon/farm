@@ -9,4 +9,5 @@ export interface AccountInterface {
   exp: number;
   level: LevelInterface;
   locale: string;
+  farmerid: number;
 }

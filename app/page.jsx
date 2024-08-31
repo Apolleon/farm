@@ -14,43 +14,34 @@ const choseLocale = (loc) => (["en", "ru"].includes(loc) ? loc : "en");
 const Home = () => {
   let tg = useRef();
   const [isHashValid, setIsHashValid] = useState(true);
-  const [user, setUser] = useState();
   const { setInitialLands } = useLandsStore();
-  const { init, setLocale } = useAccountStore();
-
+  const { init, setLocale, account } = useAccountStore();
+  console.log(account);
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
     tg.current?.expand();
-    tg.current.ready();
-    tg.current.onEvent("web_app_ready ", () => console.log("redy"));
-    tg.current.isClosingConfirmationEnabled = true;
+
     const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
     const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
-    const lands = localStorage.getItem("lands");
-    const account = localStorage.getItem("account");
-    const user = JSON.parse(account);
+    const userId = tg.current?.initDataUnsafe?.user?.id || "Player";
 
-    if (account) init({ ...user, locale: locale, name: userName });
-    else setLocale(locale, userName);
-    if (lands) {
-      const newLands = JSON.parse(localStorage["lands"]);
-      setInitialLands(newLands);
-    }
+    axios
+      .post("/api/validate-hash", { hash: hash })
+      .then((response) => setIsHashValid(response.status === 200))
+      .then(async () => {
+        const { data } = await axios.post("/api/check-unique-user", { id: userId });
+        console.log(data);
+        const acc = JSON.parse(data?.data?.[0]);
+
+        if (acc) init({ ...acc, locale: locale, name: userName });
+        else setLocale(locale, userName);
+        if (acc?.lands) {
+          const newLands = JSON.parse(acc.lands);
+          setInitialLands(newLands);
+        }
+      })
+      .catch((e) => console.error(e));
   }, []);
-
-  // useEffect(() => {
-  //   tg.current = window.Telegram.WebApp;
-
-  //   axios.post("/api/validate-hash", { hash: hash }).then((response) => setIsHashValid(response.status === 200));
-  //   // // .then(async () => {
-  //   // //   const { data } = await axios.post("/api/check-unique-user", { id: 4 });
-
-  //   // //   setUser(data.data[0]);
-  //   // // })
-  //   // .catch((e) => console.error(e));
-  //   tg.current = window.Telegram.WebApp;
-  // }, []);
-  // console.log(user);
 
   return <div className="text-slate-400">{isHashValid ? <HomePage /> : "error"}</div>;
 };
