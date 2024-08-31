@@ -12,9 +12,9 @@ export async function POST(req: NextRequest) {
 
     if (res.rowCount === 0) {
       const res = await sql`INSERT INTO Farmers (farmerid) VALUES (${body.id})`;
-      return NextResponse.json({ data: res.rows }, { status: 201 });
+      return NextResponse.json({ data: res.rows[0] }, { status: 201 });
     }
-    return NextResponse.json({ data: res.rows }, { status: 201 });
+    return NextResponse.json({ data: res.rows[0] }, { status: 201 });
   } catch (e) {
     return NextResponse.json({ e }, { status: 500 });
   }

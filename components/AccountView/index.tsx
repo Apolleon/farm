@@ -18,15 +18,15 @@ const AccountView: FC = () => {
         <div className="w-full">
           <progress
             className="w-full bg-slate-50"
-            max={account.level.goal}
+            max={account?.level?.goal}
             value={account.exp}
             style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.25) inset" }}
           />
           <div className="w-full flex justify-between">
             <span className="">
-              {account.level.current} {dictionary[account.locale].lvl}
+              {account?.level?.current} {dictionary[account?.locale]?.lvl}
             </span>
-            <span className="">{account.level.goal}</span>
+            <span className="">{account?.level?.goal}</span>
           </div>
         </div>
       </div>
