@@ -2,6 +2,7 @@
 
 import { sql } from "@vercel/postgres";
 import { NextRequest, NextResponse } from "next/server";
+import { generate } from "referral-codes";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -11,10 +12,16 @@ export async function POST(req: NextRequest) {
     const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
 
     if (res.rowCount === 0) {
-      await sql`INSERT INTO Farmers (farmerid, level, coins) VALUES (${body.id}, ${JSON.stringify({
+      const [code] = generate({
+        length: 10,
+        count: 1,
+      });
+
+      await sql`INSERT INTO Farmers (farmerid, level, coins, refferalLink) VALUES (${body.id}, ${JSON.stringify({
         current: 1,
         goal: 60,
-      })}, 10)`;
+      })}, 10, ${code})`;
+
       const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
       return NextResponse.json({ data: res.rows[0] }, { status: 201 });
     }
