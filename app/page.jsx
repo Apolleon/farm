@@ -26,9 +26,10 @@ const Home = () => {
     const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
     const userId = tg.current?.initDataUnsafe?.user?.id;
     console.log("hash valid", isHashValid);
+    console.log(tg.current);
     const initIalFn = async () => {
       axios
-        .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.query_id })
+        .post("/api/validate-hash", { hash: tg.current?.initDataUnsafe?.hash })
         .then((response) => setIsHashValid(response.status === 200));
 
       const { data } = await axios.post("/api/check-unique-user", { id: userId });
@@ -44,7 +45,11 @@ const Home = () => {
     initIalFn();
   }, []);
 
-  return <div className="text-slate-400">{isHashValid ? <HomePage /> : "error"}</div>;
+  return (
+    <div className="text-slate-400">
+      <HomePage />
+    </div>
+  );
 };
 
 export default memo(Home);
