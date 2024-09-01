@@ -18,8 +18,8 @@ const AccountView: FC = () => {
         <div className="w-full -mt-3">
           <progress
             className="w-full bg-slate-50"
-            max={50}
-            value={20}
+            max={account?.level?.goal}
+            value={account?.exp}
             style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.25) inset" }}
           />
           <div className="w-full flex justify-between text-sm">
