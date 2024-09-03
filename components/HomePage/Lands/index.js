@@ -31,7 +31,7 @@ const Lands = () => {
   }, [lands, account]);
 
   return (
-    <section className="ml-36 flex flex-col gap-2 pr-12">
+    <section className="ml-12 flex flex-col gap-2 pr-12">
       <div className="flex gap-2 ">
         <Land item={lands.first} />
         <Land item={lands.second} />

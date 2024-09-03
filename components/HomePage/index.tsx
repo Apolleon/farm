@@ -9,18 +9,17 @@ const HomePage: FC = () => {
   const { landId } = useModalStore();
 
   return (
-    <section className="w-full h-full overflow-auto relative">
+    <section
+      className="w-full h-full overflow-auto relative"
+      style={{
+        backgroundImage: `url("/home/background.jpg")`,
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <AccountView />
-      <div
-        className="bg-cover pt-96 w-screen min-w-fit"
-        style={{
-          backgroundImage: `url("/home/background.jpg")`,
-          height: "1080px",
-          backgroundPosition: "50% -600px",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "1920px",
-        }}
-      >
+      <div className="w-screen min-w-fit pb-10 absolute bottom-5">
         <Lands />
       </div>
       {landId && <LandModal />}
