@@ -3,7 +3,7 @@ import { useAccountStore } from "@/components/scripts/store/accountStore";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Refferals = ({ setShowReferals }) => {
+const Refferals = ({ setShowReferals }: { setShowReferals: () => void }) => {
   const { account } = useAccountStore();
   const [refsCount, setRefsCount] = useState(0);
   const [btnTxt, setBtnTxt] = useState(dictionary?.[account?.locale]?.invite);
