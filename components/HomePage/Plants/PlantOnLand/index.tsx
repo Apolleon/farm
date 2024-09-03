@@ -53,7 +53,7 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
           </div>
           <img
             height={20}
-            className="absolute bottom-8 md:bottom-10 z-10 left-2/3 md:left-1/2 w-fit max-w-24 md:max-w-36 -translate-x-1/2"
+            className="absolute bottom-8 md:bottom-10 z-10   w-fit max-w-24 md:max-w-36 "
             src={imgSrc}
             alt="potato"
             onClick={() => handleClearLand(plant?.coins, plant?.exp)}
@@ -71,7 +71,7 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
           </div>
           <img
             height={20}
-            className="absolute bottom-5 md:bottom-7 z-10 left-2/3 md:left-1/2 w-fit maw-w-24 md:max-w-36 -translate-x-1/2"
+            className="absolute bottom-5 md:bottom-7 z-10   w-fit maw-w-24 md:max-w-36 "
             src={imgSrc}
             alt="potato"
             onClick={() => handleClearLand(plant?.coins, plant?.exp)}
@@ -89,7 +89,7 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
           </div>
           <img
             height={20}
-            className="absolute bottom-5 md:bottom-7 z-10 left-2/3 md:left-1/2 w-fit maw-w-24 md:max-w-36 -translate-x-1/2"
+            className="absolute bottom-5 md:bottom-7 z-10   w-fit maw-w-24 md:max-w-36 "
             src={imgSrc}
             alt="tomato"
             onClick={() => handleClearLand(plant?.coins, plant?.exp)}
@@ -107,7 +107,7 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
           </div>
           <img
             height={20}
-            className="absolute bottom-5 md:bottom-7 z-10 left-2/3 md:left-1/2 w-fit maw-w-24 md:max-w-36 -translate-x-1/2"
+            className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
             src={imgSrc}
             alt="potato"
             onClick={() => handleClearLand(plant?.coins, plant?.exp)}
@@ -125,7 +125,7 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
           </div>
           <img
             height={20}
-            className="absolute bottom-5 md:bottom-7 z-10 left-2/3 md:left-1/2 w-fit maw-w-24 md:max-w-36 -translate-x-1/2"
+            className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
             src={imgSrc}
             alt="potato"
             onClick={() => handleClearLand(plant?.coins, plant?.exp)}

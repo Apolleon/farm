@@ -19,7 +19,7 @@ const HomePage: FC = () => {
       }}
     >
       <AccountView />
-      <div className="w-screen min-w-fit pb-10 absolute bottom-5">
+      <div className="w-screen min-w-fit pb-10 absolute bottom-3">
         <Lands />
       </div>
       {landId && <LandModal />}
