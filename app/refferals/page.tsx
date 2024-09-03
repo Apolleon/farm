@@ -14,12 +14,16 @@ const Refferals = () => {
 
   useEffect(() => {
     const getRefsCount = async () => {
-      const { data } = await axios.post("/api/count-refferals", { link: account.refferallink });
-      setRefsCount(data);
+      try {
+        const { data } = await axios.post("/api/count-refferals", { link: "alenka" });
+        setRefsCount(data.count);
+      } catch (e) {
+        console.error(e);
+      }
     };
 
     getRefsCount();
-  }, []);
+  }, [account]);
 
   const copyUserName = () => {
     navigator.clipboard.writeText(`https://t.me/apolleon_bot?start=${account.refferallink}`);
