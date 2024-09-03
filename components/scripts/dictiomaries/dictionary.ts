@@ -6,6 +6,9 @@ const dictionary: { [key: string]: { [key: string]: string } } = {
     lvl: "ур.",
     refsCount: "Количество рефералов",
     bounty: "Награда",
+    toHome: "На ферму",
+    invite: "Пригласить",
+    copied: "Скопировано",
   },
   en: {
     shopTitle: "Planting",
@@ -14,6 +17,9 @@ const dictionary: { [key: string]: { [key: string]: string } } = {
     lvl: "lvl",
     refsCount: "Referrals quantity",
     bounty: "Bounty",
+    toHome: "To Farm",
+    invite: "Invite",
+    copied: "Copied",
   },
 };
 

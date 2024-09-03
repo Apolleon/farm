@@ -10,13 +10,14 @@ const choseLocale = (loc) => (["en", "ru"].includes(loc) ? loc : "en");
 
 const Home = () => {
   let tg = useRef();
-  const [isHashValid, setIsHashValid] = useState(false);
+  const [isHashValid, setIsHashValid] = useState(true);
   const { setInitialLands } = useLandsStore();
   const { init, setLocale } = useAccountStore();
 
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
     tg.current?.expand();
+    tg.current?.ready();
 
     const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
     const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";

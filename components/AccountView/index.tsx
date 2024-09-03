@@ -31,7 +31,7 @@ const AccountView: FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-7 h-full aspect-square bg-stone-800 rounded-md">
+      <div className="w-14 h-full aspect-square bg-stone-800 rounded-md flex justify-center items-center ">
         <Link href={"/refferals"}>
           <img alt="referrals" width={20} height={20} src="/home/refs.svg" />
         </Link>
