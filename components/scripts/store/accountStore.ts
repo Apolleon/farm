@@ -5,13 +5,13 @@ export interface AccountState {
   account: AccountInterface;
   addProgress: (c: number, e: number) => void;
   init: (acc: AccountInterface) => void;
-  setLocale: (l: string, u: string, id: number) => void;
+  setLocale: (l: string, u: string, id: number, link: string, r: string) => void;
 }
 
 export const useAccountStore: UseBoundStore<StoreApi<AccountState>> = create((set) => ({
   account: {} as AccountInterface,
   init: (acc) => set((state: AccountState) => ({ ...state, account: acc })),
-  setLocale: (locale, userName, id) =>
+  setLocale: (locale, userName, id, link, ref) =>
     set((state: AccountState) => ({
       ...state,
       account: {
@@ -21,6 +21,8 @@ export const useAccountStore: UseBoundStore<StoreApi<AccountState>> = create((se
         coins: 10,
         exp: 0,
         level: { current: 1, goal: 60 },
+        refferallink: link,
+        refferer: ref,
       },
     })),
   addProgress: (coins: number, exp: number) =>

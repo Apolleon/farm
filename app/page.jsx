@@ -21,8 +21,6 @@ const Home = () => {
     const locale = choseLocale(tg.current?.initDataUnsafe?.user?.language_code);
     const userName = tg.current?.initDataUnsafe?.user?.first_name || "Player";
     const userId = tg.current?.initDataUnsafe?.user?.id;
-    console.log("hash valid", isHashValid);
-    console.log(tg.current);
     const initIalFn = async () => {
       axios
         .post("/api/validate-hash", { hash: tg.current?.initData })
@@ -35,14 +33,21 @@ const Home = () => {
         init({ ...acc, locale: locale, name: userName, farmerid: farmerid, level: JSON.parse(acc.level) });
         const newLands = JSON.parse(lands);
         setInitialLands(newLands);
-      } else setLocale(locale, userName, farmerid);
+      } else {
+        const { refferallink, refferer } = acc;
+        setLocale(locale, userName, farmerid, refferallink, refferallink);
+      }
     };
     initIalFn();
   }, []);
 
   return (
     <div className="text-slate-400">
-      <HomePage />
+      {isHashValid ? (
+        <HomePage />
+      ) : (
+        <div className="h-full w-full flex justify-center items-center">ПОльзователь не авторизован</div>
+      )}
     </div>
   );
 };

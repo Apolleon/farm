@@ -12,12 +12,7 @@ export async function POST(req: NextRequest) {
     const res = await sql`SELECT * FROM farmers WHERE farmerid = ${body.id}`;
 
     if (res.rowCount === 0) {
-      const [code] = generate({
-        length: 10,
-        count: 1,
-      });
-
-      await sql`INSERT INTO Farmers (farmerid, level, coins, refferalLink) VALUES (${body.id}, ${JSON.stringify({
+      await sql`INSERT INTO Farmers (farmerid, level, coins) VALUES (${body.id}, ${JSON.stringify({
         current: 1,
         goal: 60,
       })}, 10, ${code})`;

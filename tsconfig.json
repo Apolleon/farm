@@ -27,7 +27,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/layout.jsx",
-    "app/page.jsx",
+    "app/refferals/page.jsx",
     "app/api/validate-hash",
     "components/HomePage/Lands/index.js"
   ],

@@ -10,4 +10,6 @@ export interface AccountInterface {
   level: LevelInterface;
   locale: string;
   farmerid: number;
+  refferallink: string;
+  refferer: string;
 }
