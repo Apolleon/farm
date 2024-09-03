@@ -22,7 +22,7 @@ const Refferals = () => {
   }, []);
 
   const copyUserName = () => {
-    navigator.clipboard.writeText(account.refferallink);
+    navigator.clipboard.writeText(`https://t.me/apolleon_bot?start=${account.refferallink}`);
     setBtnTxt(dictionary?.[account?.locale]?.copied);
     setTimeout(() => setBtnTxt(dictionary?.[account?.locale]?.invite), 2000);
   };
