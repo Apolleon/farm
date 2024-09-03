@@ -12,7 +12,7 @@ const AccountView: FC = () => {
         <div className="w-full flex justify-between  text-xl">
           <span className="">{account.name}</span>
           <div className="flex items-center">
-            <img src={"home/paid.svg"} alt="coin" />
+            <img src={"home/монета.svg"} alt="coin" />
             <span className="">{account.coins}</span>
           </div>
         </div>

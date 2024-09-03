@@ -4,6 +4,9 @@ import { WaterMelon } from "../HomePage/Plants/helpers/classes/WaterMelon";
 import { Potato } from "../HomePage/Plants/helpers/classes/Potato";
 import { Pumpkin } from "../HomePage/Plants/helpers/classes/Pumpkin";
 import { Tomato } from "../HomePage/Plants/helpers/classes/Tomato";
+import { Wheat } from "../HomePage/Plants/helpers/classes/Wheat";
+import { Corn } from "../HomePage/Plants/helpers/classes/Corn";
+import { Beat } from "../HomePage/Plants/helpers/classes/Beet";
 
 export const setPlant: { [key: PlantType]: (startDate: number | null) => PlantInterface } = {
   potato: (startDate) => {
@@ -29,6 +32,21 @@ export const setPlant: { [key: PlantType]: (startDate: number | null) => PlantIn
   carrot: (startDate) => {
     const now = Date.now();
     const carrot = new Carrot(startDate || now);
+    return carrot;
+  },
+  wheat: (startDate) => {
+    const now = Date.now();
+    const carrot = new Wheat(startDate || now);
+    return carrot;
+  },
+  corn: (startDate) => {
+    const now = Date.now();
+    const carrot = new Corn(startDate || now);
+    return carrot;
+  },
+  beat: (startDate) => {
+    const now = Date.now();
+    const carrot = new Beat(startDate || now);
     return carrot;
   },
 };

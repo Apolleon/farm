@@ -15,7 +15,7 @@ const Refferals = () => {
   useEffect(() => {
     const getRefsCount = async () => {
       try {
-        const { data } = await axios.post("/api/count-refferals", { link: "alenka" });
+        const { data } = await axios.post("/api/count-refferals", { link: account?.refferallink });
         setRefsCount(data.count);
       } catch (e) {
         console.error(e);
@@ -26,7 +26,7 @@ const Refferals = () => {
   }, [account]);
 
   const copyUserName = () => {
-    navigator.clipboard.writeText(`https://t.me/apolleon_bot?start=${account.refferallink}`);
+    navigator.clipboard.writeText(`https://t.me/apolleon_bot?start=${account?.refferallink}`);
     setBtnTxt(dictionary?.[account?.locale]?.copied);
     setTimeout(() => setBtnTxt(dictionary?.[account?.locale]?.invite), 2000);
   };
@@ -36,11 +36,11 @@ const Refferals = () => {
       className="h-full w-full flex flex-col items-center justify-start gap-5 pt-5 text-slate-100"
       style={{ background: "linear-gradient(180deg, rgba(1,51,11,1) 0%, rgba(4,119,11,1) 100%)" }}
     >
-      <div className="flex flex-col gap-3 w-fit items-center">
+      <div className="flex flex-col gap-3 w-fit items-center bg-stone-800 rounded-md p-1">
         <span className=" text-xl">{refsCount}</span>
         <span className="">{dictionary?.[account?.locale]?.refsCount}</span>
       </div>
-      <div className="flex flex-col gap-3 w-fit items-center">
+      <div className="flex flex-col gap-3 w-fit items-center bg-stone-800 rounded-md p-1">
         <span className="flex text-xl">
           <img src="/home/paid.svg" width={20} />
           {earnings}

@@ -41,100 +41,117 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
     if (timer > 0) setTimeout(() => setTimer((prev) => Number(prev) - 1), 1000);
   }, [timer]);
 
-  switch (plant?.type) {
-    case "potato":
-      return (
-        <>
-          <div
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-            className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
-          >
-            {Number(timer) > 0 ? timer : "Готово!"}
-          </div>
-          <img
-            height={20}
-            className="absolute bottom-8 md:bottom-10 z-10   w-fit max-w-24 md:max-w-36 "
-            src={imgSrc}
-            alt="potato"
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-          />
-        </>
-      );
-    case "pumpkin":
-      return (
-        <>
-          <div
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-            className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
-          >
-            {Number(timer) > 0 ? timer : "Готово!"}
-          </div>
-          <img
-            height={20}
-            className="absolute bottom-5 md:bottom-7 z-10   w-fit maw-w-24 md:max-w-36 "
-            src={imgSrc}
-            alt="potato"
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-          />
-        </>
-      );
-    case "tomato":
-      return (
-        <>
-          <div
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-            className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
-          >
-            {Number(timer) > 0 ? timer : "Готово!"}
-          </div>
-          <img
-            height={20}
-            className="absolute bottom-5 md:bottom-7 z-10   w-fit maw-w-24 md:max-w-36 "
-            src={imgSrc}
-            alt="tomato"
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-          />
-        </>
-      );
-    case "melon":
-      return (
-        <>
-          <div
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-            className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
-          >
-            {Number(timer) > 0 ? timer : "Готово!"}
-          </div>
-          <img
-            height={20}
-            className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
-            src={imgSrc}
-            alt="potato"
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-          />
-        </>
-      );
-    case "carrot":
-      return (
-        <>
-          <div
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-            className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
-          >
-            {Number(timer) > 0 ? timer : "Готово!"}
-          </div>
-          <img
-            height={20}
-            className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
-            src={imgSrc}
-            alt="potato"
-            onClick={() => handleClearLand(plant?.coins, plant?.exp)}
-          />
-        </>
-      );
-    default:
-      return null;
-  }
+  // switch (plant?.type) {
+  //   case "potato":
+  //     return (
+  //       <>
+  //         <div
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //           className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
+  //         >
+  //           {Number(timer) > 0 ? timer : "Готово!"}
+  //         </div>
+  //         <img
+  //           height={20}
+  //           className="absolute bottom-8 md:bottom-10 z-10   w-fit max-w-24 md:max-w-36 "
+  //           src={imgSrc}
+  //           alt="potato"
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //         />
+  //       </>
+  //     );
+  //   case "pumpkin":
+  //     return (
+  //       <>
+  //         <div
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //           className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
+  //         >
+  //           {Number(timer) > 0 ? timer : "Готово!"}
+  //         </div>
+  //         <img
+  //           height={20}
+  //           className="absolute bottom-5 md:bottom-7 z-10   w-fit maw-w-24 md:max-w-36 "
+  //           src={imgSrc}
+  //           alt="potato"
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //         />
+  //       </>
+  //     );
+  //   case "tomato":
+  //     return (
+  //       <>
+  //         <div
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //           className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
+  //         >
+  //           {Number(timer) > 0 ? timer : "Готово!"}
+  //         </div>
+  //         <img
+  //           height={20}
+  //           className="absolute bottom-5 md:bottom-7 z-10   w-fit maw-w-24 md:max-w-36 "
+  //           src={imgSrc}
+  //           alt="tomato"
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //         />
+  //       </>
+  //     );
+  //   case "melon":
+  //     return (
+  //       <>
+  //         <div
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //           className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
+  //         >
+  //           {Number(timer) > 0 ? timer : "Готово!"}
+  //         </div>
+  //         <img
+  //           height={20}
+  //           className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
+  //           src={imgSrc}
+  //           alt="potato"
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //         />
+  //       </>
+  //     );
+  //   case "carrot":
+  //     return (
+  //       <>
+  //         <div
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //           className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
+  //         >
+  //           {Number(timer) > 0 ? timer : "Готово!"}
+  //         </div>
+  //         <img
+  //           height={20}
+  //           className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
+  //           src={imgSrc}
+  //           alt="potato"
+  //           onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+  //         />
+  //       </>
+  //     );
+  //   default:
+  //     return null;
+  // }
+  return (
+    <>
+      <div
+        onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+        className="absolute rounded-full bg-slate-50 w-fit px-2 z-20 bottom-1/2 left-1/2 text-center -translate-x-1/2"
+      >
+        {Number(timer) > 0 ? timer : "Готово!"}
+      </div>
+      <img
+        height={20}
+        className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
+        src={imgSrc}
+        alt="plant"
+        onClick={() => handleClearLand(plant?.coins, plant?.exp)}
+      />
+    </>
+  );
 };
 
 export default memo(PlantOnLand);

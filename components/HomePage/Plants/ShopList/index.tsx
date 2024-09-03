@@ -5,11 +5,9 @@ import ShopListItem from "./ShopListItem";
 import { useModalStore } from "../../../scripts/store/modalStore";
 import { useLandsStore } from "../../../scripts/store/landsStore";
 import { useAccountStore } from "../../../scripts/store/accountStore";
-import { LandType } from "@/components/types/lands";
-import axios from "axios";
 
 type ShopListType = Array<PlantInterface>;
-const vegetables = ["potato", "pumpkin", "tomato", "melon", "carrot"];
+const vegetables = ["potato", "pumpkin", "carrot", "tomato", "melon", "beat", "corn", "wheat"];
 
 const shopList: ShopListType = vegetables.map((veg: string) => setPlant[veg](null));
 
