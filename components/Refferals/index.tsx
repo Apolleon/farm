@@ -1,12 +1,9 @@
-"use client";
-
 import { dictionary } from "@/components/scripts/dictiomaries/dictionary";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
 import axios from "axios";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const Refferals = () => {
+const Refferals = ({ setShowReferals }) => {
   const { account } = useAccountStore();
   const [refsCount, setRefsCount] = useState(0);
   const [btnTxt, setBtnTxt] = useState(dictionary?.[account?.locale]?.invite);
@@ -33,15 +30,15 @@ const Refferals = () => {
 
   return (
     <section
-      className="h-full w-full flex flex-col items-center justify-start gap-5 pt-5 text-slate-100"
+      className="h-full w-full flex flex-col items-center justify-start gap-5 pt-5 text-slate-100 fixed top-0 left-0 px-4 z-50"
       style={{ background: "linear-gradient(180deg, rgba(1,51,11,1) 0%, rgba(4,119,11,1) 100%)" }}
     >
-      <div className="flex flex-col gap-3 w-fit items-center bg-stone-800 rounded-md p-1">
-        <span className=" text-xl">{refsCount}</span>
+      <div className="flex flex-col gap-3  items-center bg-stone-800 rounded-md p-1 w-full">
+        <span className=" text-3xl">{refsCount}</span>
         <span className="">{dictionary?.[account?.locale]?.refsCount}</span>
       </div>
-      <div className="flex flex-col gap-3 w-fit items-center bg-stone-800 rounded-md p-1">
-        <span className="flex text-xl">
+      <div className="flex flex-col gap-3  items-center bg-stone-800 rounded-md p-1 w-full">
+        <span className="flex text-3xl">
           <img src="/home/paid.svg" width={20} />
           {earnings}
         </span>
@@ -50,9 +47,12 @@ const Refferals = () => {
       <div className="flex justify-center pt-8" onClick={copyUserName}>
         <button className="bg-stone-800 px-3 py-1 rounded-md">{btnTxt}</button>
       </div>
-      <Link className="fixed bottom-3 left-1 text-slate-100 bg-stone-800 px-3 py-1 rounded-md" href={"/"}>
+      <div
+        className="fixed bottom-3 left-1 text-slate-100 bg-stone-800 px-3 py-1 rounded-md"
+        onClick={() => setShowReferals(false)}
+      >
         {dictionary?.[account?.locale]?.toHome}
-      </Link>
+      </div>
     </section>
   );
 };

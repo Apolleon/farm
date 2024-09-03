@@ -5,7 +5,7 @@ const growTime = 200000;
 class Beat extends Plant {
   constructor(startDate: number) {
     super(
-      "beat",
+      "beet",
       startDate,
       startDate + growTime,
       43,

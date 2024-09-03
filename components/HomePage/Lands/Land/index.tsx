@@ -39,7 +39,7 @@ const Land: FC<LandProps> = ({ item }) => {
 
   return (
     <div className="w-28 cursor-pointer relative z-10" onClick={handleOpenModal}>
-      <img width={162} className="h-24" loading="lazy" alt="land" src={"/home/empty land.png"} />
+      <img width={162} className="h-24" loading="lazy" alt="land" src={"/home/land1.png"} />
       {item.status === "gardened" && (
         <PlantOnLand handleSetReady={handleSetReady} handleClearLand={handleClearLand} plant={item?.plant} />
       )}

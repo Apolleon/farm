@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import { useAccountStore } from "../scripts/store/accountStore";
 import { dictionary } from "../scripts/dictiomaries/dictionary";
-import Link from "next/link";
 
-const AccountView: FC = () => {
+const AccountView: FC<{ setShowReferals: (t: true) => void }> = ({ setShowReferals }) => {
   const { account } = useAccountStore();
 
   return (
@@ -12,7 +11,7 @@ const AccountView: FC = () => {
         <div className="w-full flex justify-between  text-xl">
           <span className="">{account.name}</span>
           <div className="flex items-center">
-            <img src={"home/монета.svg"} alt="coin" />
+            <img width={15} src={"/home/coin.png"} alt="coin" />
             <span className="">{account.coins}</span>
           </div>
         </div>
@@ -32,9 +31,7 @@ const AccountView: FC = () => {
         </div>
       </div>
       <div className="w-14 h-full aspect-square bg-stone-800 rounded-md flex justify-center items-center ">
-        <Link href={"/refferals"}>
-          <img alt="referrals" width={20} height={20} src="/home/refs.svg" />
-        </Link>
+        <img alt="referrals" width={20} height={20} src="/home/refs.svg" onClick={() => setShowReferals(true)} />
       </div>
     </div>
   );

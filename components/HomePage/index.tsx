@@ -5,7 +5,7 @@ import Lands from "./Lands";
 import { useModalStore } from "../scripts/store/modalStore";
 import AccountView from "../AccountView";
 
-const HomePage: FC = () => {
+const HomePage: FC<{ setShowReferals: () => void }> = ({ setShowReferals }) => {
   const { landId } = useModalStore();
 
   return (
@@ -18,7 +18,7 @@ const HomePage: FC = () => {
         backgroundSize: "cover",
       }}
     >
-      <AccountView />
+      <AccountView setShowReferals={setShowReferals} />
       <div className="w-screen min-w-fit pb-10 absolute bottom-3">
         <Lands />
       </div>

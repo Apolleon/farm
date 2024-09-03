@@ -6,6 +6,7 @@ import HomePage from "@/components/HomePage";
 import { useLandsStore } from "@/components/scripts/store/landsStore";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
 import LoadingScreen from "@/components/HomePage/LoadingScreen";
+import Refferals from "@/components/Refferals";
 
 const choseLocale = (loc) => (["en", "ru"].includes(loc) ? loc : "en");
 
@@ -15,6 +16,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const { setInitialLands } = useLandsStore();
   const { init, setLocale } = useAccountStore();
+  const [showReferals, setShowReferals] = useState(false);
 
   useEffect(() => {
     tg.current = window.Telegram.WebApp;
@@ -54,12 +56,14 @@ const Home = () => {
 
   return (
     <div className="text-slate-400 h-full">
-      {loading && <LoadingScreen />}
-      {!loading && isHashValid && <HomePage />}
+      {/* {loading && <LoadingScreen />}
+      {!loading && isHashValid && <HomePage setShowReferals={setShowReferals} />}
 
       {!loading && !isHashValid && (
         <div className="h-full w-full flex justify-center items-center">Пользователь не авторизован</div>
-      )}
+      )} */}
+      <HomePage setShowReferals={setShowReferals} />
+      {showReferals && <Refferals setShowReferals={setShowReferals} />}
     </div>
   );
 };
