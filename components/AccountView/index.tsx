@@ -6,7 +6,7 @@ const AccountView: FC<{ setShowReferals: (t: true) => void }> = ({ setShowRefera
   const { account } = useAccountStore();
 
   return (
-    <div className="fixed w-full top-0 left-0 p-1 z-50 flex gap-2">
+    <div className="fixed w-screen top-0 left-0 p-1 z-50 flex gap-2">
       <div className="w-full flex flex-col  bg-stone-800 p-2 rounded-md  text-slate-200">
         <div className="w-full flex justify-between  text-xl">
           <span className="">{account.name}</span>

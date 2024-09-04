@@ -145,7 +145,7 @@ const PlantOnLand: FC<PlantOnLandProps> = ({ plant, handleClearLand, handleSetRe
       </div>
       <img
         height={20}
-        className="absolute bottom-5 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
+        className="absolute bottom-6 md:bottom-7 z-10  w-fit maw-w-24 md:max-w-36 "
         src={imgSrc}
         alt="plant"
         onClick={() => handleClearLand(plant?.coins, plant?.exp)}

@@ -7,7 +7,7 @@ import { useLandsStore } from "../../../scripts/store/landsStore";
 import { useAccountStore } from "../../../scripts/store/accountStore";
 
 type ShopListType = Array<PlantInterface>;
-const vegetables = ["potato", "pumpkin", "carrot", "tomato", "melon", "beat", "corn", "wheat"];
+const vegetables = ["potato", "pumpkin", "carrot", "tomato", "melon", "beet", "corn", "wheat"];
 
 const shopList: ShopListType = vegetables.map((veg: string) => setPlant[veg](null));
 

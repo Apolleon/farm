@@ -7,6 +7,7 @@ import { useLandsStore } from "@/components/scripts/store/landsStore";
 import { useAccountStore } from "@/components/scripts/store/accountStore";
 import LoadingScreen from "@/components/HomePage/LoadingScreen";
 import Refferals from "@/components/Refferals";
+import AccountView from "@/components/AccountView";
 
 const choseLocale = (loc) => (["en", "ru"].includes(loc) ? loc : "en");
 
@@ -55,13 +56,15 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="text-slate-400 h-full">
-      {loading && <LoadingScreen />}
+    <div className="text-slate-400 h-full overflow-auto">
+      <AccountView setShowReferals={setShowReferals} />
+      {/* {loading && <LoadingScreen />}
       {!loading && isHashValid && <HomePage setShowReferals={setShowReferals} />}
 
       {!loading && !isHashValid && (
         <div className="h-full w-full flex justify-center items-center">Пользователь не авторизован</div>
-      )}
+      )} */}
+      <HomePage setShowReferals={setShowReferals} />
       {showReferals && <Refferals setShowReferals={setShowReferals} />}
     </div>
   );

@@ -6,7 +6,7 @@ import { Pumpkin } from "../HomePage/Plants/helpers/classes/Pumpkin";
 import { Tomato } from "../HomePage/Plants/helpers/classes/Tomato";
 import { Wheat } from "../HomePage/Plants/helpers/classes/Wheat";
 import { Corn } from "../HomePage/Plants/helpers/classes/Corn";
-import { Beat } from "../HomePage/Plants/helpers/classes/Beet";
+import { Beet } from "../HomePage/Plants/helpers/classes/Beet";
 
 export const setPlant: { [key: PlantType]: (startDate: number | null) => PlantInterface } = {
   potato: (startDate) => {
@@ -44,9 +44,9 @@ export const setPlant: { [key: PlantType]: (startDate: number | null) => PlantIn
     const carrot = new Corn(startDate || now);
     return carrot;
   },
-  beat: (startDate) => {
+  beet: (startDate) => {
     const now = Date.now();
-    const carrot = new Beat(startDate || now);
+    const carrot = new Beet(startDate || now);
     return carrot;
   },
 };

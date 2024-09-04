@@ -2,7 +2,7 @@ import { Plant } from "./Plant";
 
 const growTime = 200000;
 
-class Beat extends Plant {
+class Beet extends Plant {
   constructor(startDate: number) {
     super(
       "beet",
@@ -24,4 +24,4 @@ class Beat extends Plant {
   }
 }
 
-export { Beat };
+export { Beet };
