@@ -58,13 +58,13 @@ const Home = () => {
   return (
     <div className="text-slate-400 h-full overflow-auto">
       <AccountView setShowReferals={setShowReferals} />
-      {/* {loading && <LoadingScreen />}
+      {loading && <LoadingScreen />}
       {!loading && isHashValid && <HomePage setShowReferals={setShowReferals} />}
 
       {!loading && !isHashValid && (
         <div className="h-full w-full flex justify-center items-center">Пользователь не авторизован</div>
-      )} */}
-      <HomePage setShowReferals={setShowReferals} />
+      )}
+      {/* <HomePage setShowReferals={setShowReferals} /> */}
       {showReferals && <Refferals setShowReferals={setShowReferals} />}
     </div>
   );
