@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
     <div className="text-slate-400 h-full overflow-auto">
-      <AccountView setShowReferals={setShowReferals} />
+      {!loading && isHashValid && <AccountView setShowReferals={setShowReferals} />}
       {loading && <LoadingScreen />}
       {!loading && isHashValid && <HomePage setShowReferals={setShowReferals} />}
 
