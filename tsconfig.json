@@ -29,7 +29,8 @@
     "app/layout.jsx",
     "app/refferals/page.jsx",
     "app/api/validate-hash",
-    "components/HomePage/Lands/index.js"
+    "components/HomePage/Lands/index.js",
+    "components/scripts/useTelegram.js"
   ],
   "exclude": ["node_modules"]
 }
